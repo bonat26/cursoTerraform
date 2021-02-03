@@ -20,7 +20,7 @@ resource "docker_container" "contenedor-ubuntu" {
     dynamic "volumes" {
         for_each = var.volumenes
         content {
-            volume_name     = contains(keys(volumes),"volume_name") ? volumes.value["volume_name"] : "volumen"
+            volume_name     = contains(keys(volumes.value),"volume_name") ? volumes.value["volume_name"] : "volumen"
             host_path       = volumes.value["host_path"] 
             container_path  = volumes.value["container_path"]
         }
